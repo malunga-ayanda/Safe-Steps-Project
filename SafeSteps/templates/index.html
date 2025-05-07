@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Safe Steps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Safe Steps</h1>
+        <p>Your trusted system for managing your child's safety.</p>
+
+        <!-- Buttons to login or register -->
+        <div class="button-container">
+            <a href="{{ url_for('login') }}" class="btn">Login</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; EduSecure 2023</div>
+                <div>
+                    <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+                    &middot;
+                    <a href="{{ url_for('terms') }}">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

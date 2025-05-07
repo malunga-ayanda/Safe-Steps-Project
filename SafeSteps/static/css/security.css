@@ -1,0 +1,31 @@
+ /* QR Scanner Styles */
+ .scanner-container {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.scanner-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.qr-code-video {
+    width: 100%; /* Make video responsive */
+    height: auto;
+    border-radius: 8px; /* Rounded corners for video */
+}
+
+.feedback {
+    margin-top: 20px;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.manual-input {
+    margin-top: 20px;
+}

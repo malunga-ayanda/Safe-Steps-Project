@@ -1,0 +1,37 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Register New Security Personnel{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Register Security Personnel</h1>
+    <form action="{{ url_for('register_security') }}" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required pattern="[A-Za-z]+">
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select class="form-control" id="role" name="role" required>
+                <option value="Entrance">Entrance</option>
+                <option value="Exit">Exit</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="contact">Email</label>
+            <input type="email" class="form-control" id="contact" name="contact" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Save</button>
+        <a href="{{ url_for('manage_security') }}" class="btn btn-secondary mt-3">Cancel</a>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/datatables-simple-demo.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Register Child{% endblock %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <main>
+
+        <div class="container mt-4">
+            <h1 class="mt-4">Create Learner Profile</h1>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="name">Child's First Name:</label><br>
+                    <input type="text" id="name" name="name" required pattern="[A-Za-z]+"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="surname">Child's Surname:</label><br>
+                    <input type="text" id="surname" name="surname" required pattern="[A-Za-z]+"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="grade">Grade:</label><br>
+                    <input type="text" id="grade" name="grade" required><br>
+                </div>
+                <div class="mb-3">
+                    <label for="id_number">Child ID Number:</label><br>
+                    <input type="text" id="id_number" name="id_number" required maxlength="13" minlength="13"><br>
+                </div>
+                <div class="mb-3">
+                    <label for="parent_id">Parent:</label><br>
+                    <select id="parent_id" name="parent_id" required>
+                        <option value="">Select a Parent</option>
+                        {% for parent in parents %}
+                        <option value="{{ parent.id }}">{{ parent.name }} {{ parent.surname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Register Child</button>
+                </div>
+                <div>        <a href="{{ url_for('manage_learner') }}" class="btn btn-secondary mt-3">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+<script src="static/js/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
+<script src="static/js/datatables-simple-demo.js"></script>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "parent_base.html" %}
+
+{% block title %}Attendance Data{% endblock %}
+
+{% block content %}
+<main>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Attendance History</h1>
+                <ol class="breadcrumb mb-4"></ol>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Grade</th>
+                            <th>Date</th>
+                            <th>Entrance Time</th>
+                            <th>Exit Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in attendance_data %}
+                        <tr>
+                            <td>{{ record.name }}</td>
+                            <td>{{ record.grade }}</td>
+                            <td>{{ record.date }}</td>
+                            <td>{{ record.entrance_time }}</td>
+                            <td>{{ record.exit_time }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

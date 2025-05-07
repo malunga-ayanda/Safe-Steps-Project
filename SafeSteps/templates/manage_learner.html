@@ -1,0 +1,64 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Manage Learners{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="card-body">
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Manage Learners</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item">
+                    <a href="{{ url_for('register_child') }}" class="btn btn-primary">Create Learner</a>
+                </li>
+            </ol>
+
+            <!-- Table for Learners -->
+            <div class="table-responsive mt-4">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Parent</th>
+                            <th>Email</th>
+                            <th>Grade</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for learner in learners %}
+                        <tr>
+                            <td>{{ learner['name'] }}</td>
+                            <td>{{ learner['parent_name'] }}</td>
+                            <td>{{ learner['parent_id'] }}</td>
+                            <td>{{ learner['grade'] }}</td>
+                            <td>
+                                <a href="{{ url_for('edit_learner', learner_id=learner['id']) }}"
+                                    class="btn btn-warning btn-sm">Edit</a>
+                                    <form action="{{ url_for('delete_learner', child_id=learner['id']) }}" method="POST" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this learner?');">Delete</button>
+                                    </form>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6">No learners found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+<script src="static/js/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
+<script src="static/js/datatables-simple-demo.js"></script>
+
+
+{% endblock %}

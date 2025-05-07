@@ -1,0 +1,39 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Edit Learner{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Edit Learner</h1>
+    <form action="{{ url_for('edit_learner', learner_id=learner_id) }}" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ learner.name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="surname" class="form-label">Surname:</label>
+            <input type="text" class="form-control" id="surname" name="surname" value="{{ learner.surname }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="grade" class="form-label">Grade:</label>
+            <input type="text" class="form-control" id="grade" name="grade" value="{{ learner.grade }}" placeholder="10 B" required>
+        </div>
+        <div class="mb-3">
+            <label for="id_number" class="form-label">Child ID Number:</label>
+            <input type="number" class="form-control" id="id_number" name="id_number" value="{{ learner.child_id }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="parent" class="form-label">Parent:</label>
+            <select id="parent_id" name="parent_id" required>
+                {% for parent in parents %}
+                    <option value="{{ parent.id }}" {% if parent.id == learner.parent_id %}selected{% endif %}>
+                        {{ parent.name }} {{ parent.surname }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{{ url_for('manage_learner') }}" class="btn btn-secondary">Return</a>
+    </form>
+</div>
+{% endblock %}

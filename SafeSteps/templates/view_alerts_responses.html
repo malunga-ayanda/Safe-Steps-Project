@@ -1,0 +1,38 @@
+{% extends "admin_base.html" %}
+
+{% block title %}View Alert Responses{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Alert Responses</h1>
+    {% if alerts %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Child ID</th>
+                    <th>Message</th>
+                    <th>Parent ID</th>
+                    <th>Status</th>
+                    <th>Response</th>
+                    <th>Responded At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alert in alerts %}
+                    <tr>
+                        <td>{{ alert.child_id }}</td>
+                        <td>{{ alert.message }}</td>
+                        <td>{{ alert.parent_id }}</td>
+                        <td>{{ alert.status }}</td>
+                        <td>{{ alert.response if 'response' in alert else 'No response yet' }}</td>
+                        <td>{{ alert.responded_at if 'responded_at' in alert else 'Not responded' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No alerts available.</p>
+    {% endif %}
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+{% endblock %}

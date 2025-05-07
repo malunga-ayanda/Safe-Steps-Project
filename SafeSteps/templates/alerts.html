@@ -1,0 +1,23 @@
+{% extends "parent_base.html" %}
+
+{% block title %}Alerts{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Alerts</h1>
+    {% if alerts %}
+        {% for alert in alerts %}
+            <div class="alert alert-warning">
+                <p>{{ alert.message }}</p>
+                <form method="POST" action="{{ url_for('alerts') }}">
+                    <input type="hidden" name="alert_id" value="{{ alert.id }}">
+                    <button type="submit" name="response" value="safe" class="btn btn-success">My child is safe</button>
+                    <button type="submit" name="response" value="unknown" class="btn btn-danger">I do not know about this absence</button>
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No new alerts at the moment.</p>
+    {% endif %}
+</div>
+{% endblock %}

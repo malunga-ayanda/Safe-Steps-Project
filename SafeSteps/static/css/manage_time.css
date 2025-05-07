@@ -1,0 +1,38 @@
+/* styles.css */
+
+/* Hide elements by default */
+#timePickerSection {
+    display: none;
+}
+
+#timeTableSection {
+    display: none;
+}
+
+/* Margin for the top */
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+}

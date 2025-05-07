@@ -1,0 +1,79 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Parent Information{% endblock %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="card-body">
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">{{ parent.name }} {{ parent.surname }}'s Information</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item">
+                        <a href="{{ url_for('manage_parent') }}" class="btn btn-secondary">Back to Manage Parents</a>
+                    </li>
+                </ol>
+
+                <!-- Parent Information -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3>Parent Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Name:</strong> {{ parent.name }} {{ parent.surname }}</p>
+                        <p><strong>Email:</strong> {{ parent.email }}</p>
+                        <p><strong>Address:</strong> {{ parent.address }}</p>
+                        <p><strong>Phone:</strong> {{ parent.phone }}</p>
+                        <p><strong>Gender:</strong> {{ parent.gender }}</p>
+                    </div>
+                </div>
+
+                <!-- Children Information -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3>Children</h3>
+                    </div>
+                    <div class="card-body">
+                        {% if children %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Child ID</th>
+                                        <th>Name</th>
+                                        <th>Surname</th>
+                                        <th>Grade</th>
+                                        <th>QR Code</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for child in children %}
+                                    <tr>
+                                        <td>{{ child.id }}</td>
+                                        <td>{{ child.name }}</td>
+                                        <td>{{ child.surname }}</td>
+                                        <td>{{ child.grade }}</td>
+                                        <td>
+                                            <img src="{{ child.qr_code_url }}" alt="QR Code" class="img-thumbnail"
+                                            width="50" height="50">
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="5" class="text-center">No children registered for this parent.</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="text-center">No children registered for this parent.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

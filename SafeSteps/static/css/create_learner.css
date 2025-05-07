@@ -1,0 +1,61 @@
+.container {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Set a max width for the container */
+    margin: 50px auto; /* Center the container */
+}
+
+h1 {
+    color: #343a40; /* Dark grey */
+    margin-bottom: 20px;
+    text-align: center; /* Center the title */
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary color */
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.mb-3 {
+    margin-bottom: 1rem; /* Margin for form groups */
+}
+
+/* Styles for dropdown */
+.dropdown-list {
+    display: none; /* Hide dropdown initially */
+    position: absolute; /* Position relative to input */
+    background-color: white; /* Dropdown background */
+    border: 1px solid #ccc; /* Border for dropdown */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1000; /* Ensure dropdown is above other content */
+}
+
+.parent-input-container:hover .dropdown-list {
+    display: block; /* Show dropdown on hover */
+}
+
+.dropdown-item {
+    padding: 8px 12px; /* Padding for dropdown items */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.dropdown-item:hover {
+    background-color: #007bff; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Input styling */
+.form-control {
+    height: 38px; /* Decrease the height of the input */
+    font-size: 14px; /* Decrease the font size */
+}

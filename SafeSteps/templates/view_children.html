@@ -1,0 +1,33 @@
+{% extends "parent_base.html" %}
+
+{% block title %}My Children{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Your Children</h1>
+
+    <!-- Check if there are children registered -->
+    {% if children %}
+        <div class="row">
+            {% for child in children %}
+                <div class="col-md-4 mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ child.name }} {{ child.surname }}</h5>
+                            <p class="card-text">
+                                Grade: {{ child.grade }} <br>
+                                Child ID: {{ child.child_id }}
+                            </p>
+                            <a href="{{ url_for('view_child_info', parent_id=current_user.get_id(), child_id=child.id) }}" class="btn btn-primary">
+                                View Child Info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You have no registered children.</p>
+    {% endif %}
+</div>
+{% endblock %}

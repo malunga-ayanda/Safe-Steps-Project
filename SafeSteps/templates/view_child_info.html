@@ -1,0 +1,25 @@
+{% extends "parent_base.html" %}
+
+{% block title %}View Child Information{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Child Information</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <strong>Child Details</strong>
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ child.name }}</p>
+            <p><strong>Surname:</strong> {{ child.surname }}</p>
+            <p><strong>Grade:</strong> {{ child.grade }}</p>
+            <p><strong>Child ID:</strong> {{ child.child_id }}</p>
+            <p><strong>QR Code:</strong></p>
+            <img src="{{ child.qr_code_url }}" alt="QR Code" width="150">
+        </div>
+    </div>
+
+    <a href="{{ url_for('parent_dashboard') }}" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+{% endblock %}
